@@ -23,7 +23,10 @@ function Page() {
   const checkout = async () => {
     const provider = await connector!.getProvider();
     const paywall = new Paywall(paywallConfig, networks, provider);
-    paywall.loadCheckoutModal(paywallConfig, "https://app.unlock-protocol.com");
+    paywall.loadCheckoutModal(
+      paywallConfig,
+      "https://staging-app.unlock-protocol.com"
+    );
     return false;
   };
 
