@@ -16,29 +16,22 @@ const paywallConfig = {
 function Page() {
   const { isConnected, connector } = useAccount();
 
-  // const connect = async () => {
-  //   const paywall = new Paywall({ locks: {} }, networks);
-  //   console.log(paywall);
-  //   const provider = await paywall.authenticate("http://localhost:3000");
-  //   console.log({ provider });
-  // };
-
   const { connect } = useConnect({
     connector: new InjectedConnector(),
   });
 
   const checkout = async () => {
-    const provider = await connector.getProvider();
+    const provider = await connector!.getProvider();
     const paywall = new Paywall(paywallConfig, networks, provider);
-    paywall.loadCheckoutModal(paywallConfig, "http://localhost:3000", provider);
+    paywall.loadCheckoutModal(paywallConfig, "http://localhost:3000");
     return false;
   };
 
   return (
     <>
-      <h1>wagmi + Next.js</h1>
-      {!isConnected && <button onClick={connect}>Connect</button>}
-      {isConnected && <button onClick={checkout}>Paywall</button>}
+      <h1>wagmi + Next.js + Paywall</h1>
+      {!isConnected && <button onClick={() => connect()}>Connect</button>}
+      {isConnected && <button onClick={() => checkout()}>Paywall</button>}
     </>
   );
 }
