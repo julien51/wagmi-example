@@ -1,25 +1,17 @@
-import { ConnectKitProvider } from 'connectkit'
-import type { AppProps } from 'next/app'
-import NextHead from 'next/head'
-import * as React from 'react'
-import { WagmiConfig } from 'wagmi'
+import { WagmiConfig, createClient } from "wagmi";
+import { getDefaultProvider } from "ethers";
 
-import { client } from '../wagmi'
+const client = createClient({
+  autoConnect: true,
+  provider: getDefaultProvider(),
+});
 
-function App({ Component, pageProps }: AppProps) {
-  const [mounted, setMounted] = React.useState(false)
-  React.useEffect(() => setMounted(true), [])
+function App({ Component, pageProps }: any) {
   return (
     <WagmiConfig client={client}>
-      <ConnectKitProvider>
-        <NextHead>
-          <title>My wagmi + ConnectKit App</title>
-        </NextHead>
-
-        {mounted && <Component {...pageProps} />}
-      </ConnectKitProvider>
+      <Component {...pageProps} />
     </WagmiConfig>
-  )
+  );
 }
 
-export default App
+export default App;
