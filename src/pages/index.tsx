@@ -13,16 +13,28 @@ const paywallConfig = {
   title: "My Membership",
 };
 
+const paywall = new Paywall(networks);
+
 function Page() {
   const { isConnected, connector } = useAccount();
 
   const { connect } = useConnect({
-    connector: new InjectedConnector(),
+    connector: new InjectedConnector({
+      options: {
+        name: "My Injected Wallet",
+        getProvider: async () => {
+          // Here we need to pass the provider from the paywall object.
+          // But maybe we don't open it yet?
+          console.log("getProvider");
+          return paywall.authenticate("http://localhost:3000");
+        },
+      },
+    }),
   });
 
   const checkout = async () => {
     const provider = await connector!.getProvider();
-    const paywall = new Paywall(paywallConfig, networks, provider);
+
     paywall.loadCheckoutModal(
       paywallConfig,
       "https://staging-app.unlock-protocol.com"

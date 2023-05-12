@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "@unlock-protocol/networks": "^0.0.13",
-    "@unlock-protocol/paywall": "^0.4.0",
-    "connectkit": "^1.2.2",
+    "@unlock-protocol/paywall": "../unlock/packages/paywall",
     "ethers": "^5.7.0",
     "next": "^13.0.0",
     "react": "^18.2.0",
