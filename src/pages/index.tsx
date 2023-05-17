@@ -1,7 +1,6 @@
 import { useAccount, useConnect } from "wagmi";
 import { Paywall } from "@unlock-protocol/paywall";
 import networks from "@unlock-protocol/networks";
-import { InjectedConnector } from "wagmi/connectors/injected";
 
 const paywallConfig = {
   locks: {
@@ -14,18 +13,11 @@ const paywallConfig = {
 };
 
 function Page() {
-  const { isConnected, connector } = useAccount();
-
-  const { connect } = useConnect({
-    connector: new InjectedConnector(),
-  });
-
   const checkout = async () => {
-    const provider = await connector!.getProvider();
-    const paywall = new Paywall(paywallConfig, networks, provider);
+    const paywall = new Paywall(paywallConfig, networks);
     paywall.loadCheckoutModal(
       paywallConfig,
-      "https://staging-app.unlock-protocol.com"
+      "https://app.unlock-protocol.com/"
     );
     return false;
   };
@@ -33,8 +25,7 @@ function Page() {
   return (
     <>
       <h1>wagmi + Next.js + Paywall</h1>
-      {!isConnected && <button onClick={() => connect()}>Connect</button>}
-      {isConnected && <button onClick={() => checkout()}>Paywall</button>}
+      <button onClick={() => checkout()}>Paywall</button>
     </>
   );
 }
