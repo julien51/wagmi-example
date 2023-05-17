@@ -15,7 +15,10 @@ const paywallConfig = {
 function Page() {
   const checkout = async () => {
     const paywall = new Paywall(paywallConfig, networks);
-    paywall.loadCheckoutModal(paywallConfig, "http://localhost:3000/");
+    paywall.loadCheckoutModal(
+      paywallConfig,
+      "https://app.unlock-protocol.com/"
+    );
     return false;
   };
 
