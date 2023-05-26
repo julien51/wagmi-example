@@ -1209,15 +1209,18 @@
     "@typescript-eslint/types" "5.59.1"
     eslint-visitor-keys "^3.3.0"
 
+"@unlock-protocol/contracts@^0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@unlock-protocol/contracts/-/contracts-0.0.22.tgz#634932a7e0628f812d26b5f6aa4839637a9d36eb"
+  integrity sha512-Vr3dMEBMBrQZ4tHY9HbGHNSKi4hWuRqt5G7zLI2WPDhhecBjTWD2ad6pY2EyGfoF/oIvhjdhi80uPJgxBSZlvA==
+
 "@unlock-protocol/networks@^0.0.13":
   version "0.0.13"
   resolved "https://registry.yarnpkg.com/@unlock-protocol/networks/-/networks-0.0.13.tgz#e1a77ed21a51966c5aad104f636f7894be91e850"
   integrity sha512-gaZe7qI6YmuocRqB/o4h9tyc33bxo6kl2nVa5j/8CtpwoFHh79kQBXflG2tRUwTQmour8NMTpkNd6taU+kUiEw==
 
-"@unlock-protocol/paywall@^0.4.0":
+"@unlock-protocol/paywall@../unlock/packages/paywall":
   version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@unlock-protocol/paywall/-/paywall-0.4.0.tgz#838c39c30865d14228de7be55784b92f27a55d38"
-  integrity sha512-QxnoEHqsmdHWuAZ3PlH37LqGd4NqS+ODOdamOQAArAOpQ5IdsjiI7IFd0uHUL6uCW7PCiVdxCEoBhoY/yS75Mw==
   dependencies:
     postmate "1.5.2"
 

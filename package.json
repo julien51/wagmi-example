@@ -9,8 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@unlock-protocol/contracts": "^0.0.22",
     "@unlock-protocol/networks": "^0.0.13",
-    "@unlock-protocol/paywall": "^0.4.0",
+    "@unlock-protocol/paywall": "../unlock/packages/paywall",
     "connectkit": "^1.2.2",
     "ethers": "^5.7.0",
     "next": "^13.0.0",

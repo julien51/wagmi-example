@@ -1,9 +1,13 @@
 import { WagmiConfig, createClient } from "wagmi";
-import { getDefaultProvider } from "ethers";
+import { ethers, getDefaultProvider } from "ethers";
+import { network } from "./config";
 
 const client = createClient({
   autoConnect: true,
-  provider: getDefaultProvider(),
+  provider: new ethers.providers.JsonRpcProvider(
+    `https://rpc.unlock-protocol.com/${network}`,
+    network
+  ),
 });
 
 function App({ Component, pageProps }: any) {
